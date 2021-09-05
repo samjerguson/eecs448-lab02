@@ -1,6 +1,6 @@
 /**
-*	@author 
-*	@date 
+*	@author Sam Jerguson
+*	@date 9/5/2021
 *	@file LinkedList.hpp
 *	@brief Implementation file for templated LinkedList class
 */
@@ -27,7 +27,7 @@ bool LinkedList<T>::isEmpty() const
 }
 
 template <typename T>
-int LinkedList<T>::size() const
+int LinkedList<T>::size() const //FIXED
 {
 	/** TODO 
 		Fix this method
@@ -40,7 +40,18 @@ bool LinkedList<T>::search(T value) const
 {
 	Node<T>* temp = m_front;
 	bool isFound = false;
-
+	for(int i = 1; i <= m_size; i++)
+	{
+		if(temp->getValue() == value)
+		{
+			isFound = true;
+			break;
+		}
+		else
+		{
+			temp = temp->getNext();
+		}
+	}
 	/** TODO 
 		Fix this method
 	*/
