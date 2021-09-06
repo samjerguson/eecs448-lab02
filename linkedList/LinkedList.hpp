@@ -36,7 +36,7 @@ int LinkedList<T>::size() const //FIXED
 }
 
 template <typename T>
-bool LinkedList<T>::search(T value) const
+bool LinkedList<T>::search(T value) const //FIXED
 {
 	Node<T>* temp = m_front;
 	bool isFound = false;
@@ -113,6 +113,24 @@ bool LinkedList<T>::removeBack()
 	Node<T>* lastNode = nullptr;
 	Node<T>* secondintoLast = nullptr;
 	bool isRemoved = false;
+	
+	if(!isEmpty())
+	{
+		lastNode = m_front;
+		secondintoLast = m_front;
+		for(int i = 1; i <= m_size; i++)
+		{
+			lastNode = lastNode->getNext();
+			if(i != m_size)
+			{
+				secondintoLast = secondintoLast->getNext();
+			}
+		}
+		delete lastNode;
+		m_size--;
+		secondintoLast->setNext(nullptr);
+		isRemoved = true;
+	}
 
 	/** TODO 
 		Fix this method
