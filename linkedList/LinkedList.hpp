@@ -4,7 +4,6 @@
 *	@file LinkedList.hpp
 *	@brief Implementation file for templated LinkedList class
 */
-
 template <typename T>
 LinkedList<T>::LinkedList() : m_front(nullptr), m_size(0)
 {
@@ -120,15 +119,15 @@ bool LinkedList<T>::removeBack()
 		secondintoLast = m_front;
 		for(int i = 1; i <= m_size; i++)
 		{
+			secondintoLast = lastNode;
 			lastNode = lastNode->getNext();
-			if(i != m_size)
+			if(i == m_size-1)
 			{
-				secondintoLast = secondintoLast->getNext();
+				secondintoLast->setNext(nullptr);
 			}
 		}
 		delete lastNode;
 		m_size--;
-		secondintoLast->setNext(nullptr);
 		isRemoved = true;
 	}
 
